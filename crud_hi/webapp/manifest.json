@@ -1,0 +1,159 @@
+{
+    "_version": "1.33.0",
+    "sap.app": {
+        "id": "com.crud.hi.crudhi",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap-ux/fiori-freestyle-writer:basic",
+            "version": "0.11.15",
+            "toolsId": "511ec05b-05e4-4beb-84a0-03bc72a69c3b"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZN_HI_CRUD_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "fullWidth": true,
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.90.7",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.crud.hi.crudhi.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.crud.hi.crudhi.view",
+                "controlId": "idCrud",
+                "transition": "slide"
+            },
+            "routes": [
+                {
+                    "name": "master",
+                    "pattern": "",
+                    "target": [
+                        "master",
+                        "detail"
+                    ]
+                },
+                {
+                    "name": "detail",
+                    "pattern": "detail/{EmpId}",
+                    "target": [
+                        "master",
+                        "detail"
+                    ]
+                },
+                {
+                    "name": "create",
+                    "pattern": "create",
+                    "target": [
+                        "master",
+                        "create"
+                    ]
+                },
+                {
+                    "name": "update",
+                    "pattern": "update",
+                    "target": [
+                        "master",
+                        "update"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "controlAggregation": "beginColumnPages",
+                    "viewName": "Master"
+                },
+                "detail": {
+                    "controlAggregation": "midColumnPages",
+                    "viewName": "Detail"
+                },
+                "create": {
+                    "controlAggregation": "midColumnPages",
+                    "viewName": "Create"
+                },
+                "update": {
+                    "controlAggregation": "midColumnPages",
+                    "viewName": "Update"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.crud.hi.crudhi.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

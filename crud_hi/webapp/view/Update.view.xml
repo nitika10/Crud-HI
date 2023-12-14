@@ -1,0 +1,181 @@
+<mvc:View
+	controllerName="com.crud.hi.crudhi.controller.Update"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+	xmlns:f="sap.f"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:ui="sap.ui.table"
+	xmlns:l="sap.ui.layout"
+>
+	<f:DynamicPage
+		id="idDynamicPageCreate"
+		toggleHeaderOnTitleClick="false"
+	>
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Purchase Update Data"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:content>
+			<VBox fitContainer="true">
+				<Panel id="createFormHeader">
+					<form:SimpleForm
+						title="Update Employee Details"
+						editable="true"
+					>
+						<Label
+							text="Empid(required) "
+							labelFor="Empid"
+							design="Bold"
+						/>
+						<Input
+							id="emp_id"
+							required="true"
+							width="50%"
+							value="{empHeaderUpdate>/EmpId}"
+							editable="false"
+						/>
+						<Label
+							text="Name "
+							labelFor="Name"
+							design="Bold"
+						/>
+						<Input
+							id="name_id"
+							width="50%"
+							value="{empHeaderUpdate>/EmpName}"
+						/>
+						<Label
+							text="Gender "
+							labelFor="Gender"
+							design="Bold"
+						/>
+						<Input
+							id="gender_id"
+							width="50%"
+							value="{empHeaderUpdate>/EmpGender}"
+							showValueHelp="true"
+							valueHelpRequest="onGender"
+							valueHelpOnly="true"
+						/>
+						<Label
+							text="Date of Joining "
+							labelFor="Doj"
+							design="Bold"
+						/>
+						<DatePicker
+							id="doj_id"
+							placeholder="Enter Date"
+							change="handleChange"
+							showFooter="true"
+							width="50%"
+							dateValue="{
+								path: 'empHeaderUpdate>/EmpDoj'
+							}"
+						/>
+						<Label
+							text="Department "
+							labelFor="Dept"
+							design="Bold"
+						/>
+						<Input
+							id="dept_id"
+							width="50%"
+							value="{empHeaderUpdate>/EmpDept}"
+							showValueHelp="true"
+							valueHelpRequest="onDept"
+							valueHelpOnly="true"
+						/>
+						<Label
+							text="Mobile Number "
+							labelFor="mno"
+							design="Bold"
+						/>
+						<Input
+							id="mno_id"
+							width="50%"
+							value="{empHeaderUpdate>/EmpMob}"
+							liveChange="onChangeMob"
+							type="Tel"
+							maxLength="10"
+						/>
+					</form:SimpleForm>
+					<ui:Table
+						rows="{empItemUpdate>/}"
+						id="emp_salary"
+						selectionMode="None"
+						visibleRowCount="4"
+						ariaLabelledBy="title"
+					>
+						<ui:columns>
+							<ui:Column width="auto">
+								<Label text="EmpId"/>
+								<ui:template>
+									<Input
+										value="{empItemUpdate>EmpId}"
+										editable="false"
+									/>
+								</ui:template>
+							</ui:Column>
+							<ui:Column width="auto">
+								<Label text="Salary"/>
+								<ui:template>
+									<Input
+										id="salary_id"
+										value="{empItemUpdate>Salary}"
+										liveChange="onChangeSalary"
+										maxLength="10"
+									/>
+								</ui:template>
+							</ui:Column>
+							<ui:Column width="auto">
+								<Label text="Doj"/>
+								<ui:template>
+									<DatePicker
+										editable="false"
+										id="doj_idu"
+										placeholder="Enter Date"
+										change="handleChange"
+										showFooter="true"
+										dateValue="{
+											path: 'empHeaderUpdate>/EmpDoj'
+										}"
+									/>
+								</ui:template>
+							</ui:Column>
+							<ui:Column width="auto">
+								<Label text="Account Number"/>
+								<ui:template>
+									<Input
+										value="{empItemUpdate>AccountNo}"
+										liveChange="onChangeAccount"
+										maxLength="8"
+									/>
+								</ui:template>
+							</ui:Column>
+						</ui:columns>
+					</ui:Table>
+					<content>
+						<l:VerticalLayout
+							class="sapUiContentPadding"
+							width="100%"
+						>
+							<Button
+								text="Save"
+								width="230px"
+								press="onSave"
+								class="sapUiSmallMarginBottom"
+								ariaHasPopup="Dialog"
+							/>
+						</l:VerticalLayout>
+					</content>
+				</Panel>
+			</VBox>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

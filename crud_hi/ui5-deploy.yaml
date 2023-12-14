@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: '2.5'
+metadata:
+  name: com.crud.hi.crudhi
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://eight20t.mydomain.com:8058/
+          client: '800'
+        app:
+          name: ZCRUD_HI
+          description: CRUD Header Item
+          package: ZNITIKA
+          transport: 'ST5K900010'

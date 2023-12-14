@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZN_HI_CRUD_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="Employee_Emp_HId" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="EmpId"/>
+                </Key>
+                <Property Name="Message" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Message" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccountNo" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Account No. DE" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Salary" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Salary D E" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmpId" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Employee ID Data Element" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmpName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Employee Name Data Element" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmpDept" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Employee Department Data Element" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmpMob" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Employee Mobile Data Element" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmpGender" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Gender Data Element" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmpDoj" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date of Joining Data Element" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Department" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Code"/>
+                </Key>
+                <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Flag" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Boolean Variable (X = True, - = False, Space = Unknown)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Department Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Employee_HD" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="EmpId"/>
+                </Key>
+                <Property Name="EmpId" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Employee ID Data Element" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmpName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Employee Name Data Element" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmpDept" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Employee Department Data Element" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmpMob" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Employee Mobile Data Element" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmpGender" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Gender Data Element" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmpDoj" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date of Joining Data Element" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="headertoitemnav" Relationship="ZN_HI_CRUD_SRV.header_to_item_association" FromRole="FromRole_header_to_item_association" ToRole="ToRole_header_to_item_association"/>
+            </EntityType>
+            <EntityType Name="Salary_ID" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="EmpId"/>
+                </Key>
+                <Property Name="EmpId" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Employee ID Data Element" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Salary" Type="Edm.Decimal" Precision="10" Scale="2" sap:unicode="false" sap:label="salary" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Doj" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date D E" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccountNo" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Account No. DE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Gender" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CodeG"/>
+                </Key>
+                <Property Name="CodeG" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Code For Gender" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DescriptionG" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Description Gender" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="header_to_item_association" sap:content-version="1">
+                <End Type="ZN_HI_CRUD_SRV.Employee_HD" Multiplicity="1" Role="FromRole_header_to_item_association"/>
+                <End Type="ZN_HI_CRUD_SRV.Salary_ID" Multiplicity="1" Role="ToRole_header_to_item_association"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_header_to_item_association">
+                        <PropertyRef Name="EmpId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_header_to_item_association">
+                        <PropertyRef Name="EmpId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZN_HI_CRUD_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Employee_Emp_HIdSet" EntityType="ZN_HI_CRUD_SRV.Employee_Emp_HId" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DepartmentSet" EntityType="ZN_HI_CRUD_SRV.Department" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Employee_HDSet" EntityType="ZN_HI_CRUD_SRV.Employee_HD" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Salary_IDSet" EntityType="ZN_HI_CRUD_SRV.Salary_ID" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="GenderSet" EntityType="ZN_HI_CRUD_SRV.Gender" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="header_to_item_associationSet" Association="ZN_HI_CRUD_SRV.header_to_item_association" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Employee_HDSet" Role="FromRole_header_to_item_association"/>
+                    <End EntitySet="Salary_IDSet" Role="ToRole_header_to_item_association"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://103.44.1.50:8058/sap/opu/odata/sap/ZN_HI_CRUD_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://103.44.1.50:8058/sap/opu/odata/sap/ZN_HI_CRUD_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

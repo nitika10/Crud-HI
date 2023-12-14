@@ -1,0 +1,156 @@
+<mvc:View
+	controllerName="com.crud.hi.crudhi.controller.Detail"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+	xmlns:uxap="sap.uxap"
+	xmlns:ui="sap.ui.table"
+	xmlns:layout="sap.ui.layout"
+>
+	<OverflowToolbar>
+		<ToolbarSpacer/>
+		<Button
+			tooltip="Delete"
+			icon="sap-icon://delete"
+			text="Delete"
+			press="onDelete"
+		/>
+		<Button
+			tooltip="Update"
+			icon="sap-icon://edit"
+			text="Update"
+			press="onUpdate"
+		/>
+	</OverflowToolbar>
+	<uxap:ObjectPageLayout
+		showTitleInHeaderContent="true"
+		id="objectPageLayout"
+	>
+		<uxap:headerTitle>
+			<uxap:ObjectPageDynamicHeaderTitle>
+				<uxap:expandedHeading>
+					<HBox>
+						<Title
+							text="{employeeHI>/EmpId}"
+							wrapping="true"
+						/>
+					</HBox>
+				</uxap:expandedHeading>
+				<uxap:snappedHeading>
+					<FlexBox
+						fitContainer="true"
+						alignItems="Center"
+					>
+						<Title
+							text="{employeeHI>/EmpId}"
+							wrapping="true"
+						/>
+					</FlexBox>
+				</uxap:snappedHeading>
+			</uxap:ObjectPageDynamicHeaderTitle>
+		</uxap:headerTitle>
+		<uxap:footer>
+		</uxap:footer>
+		<uxap:headerContent>
+			<FlexBox wrap="Wrap">
+				<layout:HorizontalLayout>
+					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+						<layout:content>
+							<Label text="Name"/>
+							<Label text="Department"/>
+							<Label text="Mobile Number"/>
+							<Label text="Gender"/>
+							<Label text="Employee Doj"/>
+						</layout:content>
+					</layout:VerticalLayout>
+					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+						<layout:content>
+							<Text text="{employeeHI>/EmpName}"/>
+							<Text text="{employeeHI>/EmpDept}"/>
+							<Text text="{employeeHI>/EmpMob}"/>
+							<Text text="{employeeHI>/EmpGender}"/>
+							<Text text="{
+								path: 'employeeHI>/EmpDoj',
+								formatter: '.dateDojFormat'
+							}"/>
+						</layout:content>
+					</layout:VerticalLayout>
+				</layout:HorizontalLayout>
+			</FlexBox>
+		</uxap:headerContent>
+		<uxap:landmarkInfo>
+		</uxap:landmarkInfo>
+		<uxap:sections>
+			<uxap:ObjectPageSection
+				titleUppercase="false"
+				title="Items"
+			>
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection>
+						<uxap:blocks>
+							<ui:Table
+								id=""
+								rows="{employeeItem>/}"
+								selectionMode="None"
+								visibleRowCount="2"
+								ariaLabelledBy="title"
+							>
+								<ui:extension>
+									<OverflowToolbar style="Clear">
+										<Title
+											id="title"
+											text="Employee Details"
+										/>
+									</OverflowToolbar>
+								</ui:extension>
+								<ui:columns>
+									<ui:Column
+										width="auto"
+										hAlign="End"
+									>
+										<Label text="EmpId"/>
+										<ui:template>
+											<Text
+												text="{employeeItem>EmpId}"
+												id="emp_id"
+												wrapping="false"
+											/>
+											<!-- <Text
+												text="{employeeHI>/EmpId}"
+												id="emp_id"
+												wrapping="false"
+											/> -->
+										</ui:template>
+									</ui:Column>
+									<ui:Column width="auto">
+										<Label text="Salary"/>
+										<ui:template>
+											<Text text="{employeeItem>Salary}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column width="auto">
+										<Label text="Date Of Joining"/>
+										<ui:template>
+											<Text text="{
+												path: 'employeeItem>Doj',
+												formatter: '.dateDojFormat'
+											}"/>
+										</ui:template>
+									</ui:Column>
+									<ui:Column width="auto">
+										<Label text="Account Number"/>
+										<ui:template>
+											<Text text="{employeeItem>AccountNo}"/>
+										</ui:template>
+									</ui:Column>
+								</ui:columns>
+							</ui:Table>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+		</uxap:sections>
+	</uxap:ObjectPageLayout>
+</mvc:View>

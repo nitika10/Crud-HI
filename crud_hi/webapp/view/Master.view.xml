@@ -1,0 +1,54 @@
+<mvc:View
+	controllerName="com.crud.hi.crudhi.controller.Master"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m"
+>
+	<!-- <Page id="page" title="{i18n>title}">
+        <content />
+    </Page> -->
+	<Page
+		id="pageMaster"
+		title="{i18n>title}"
+	>
+		<content/>
+		<List
+			id="listId"
+			headerText="Employees"
+			items="{
+				path: '/Employee_HDSet',
+				parameters: {
+					operationMode: 'Client'
+				}
+			}"
+			growingScrollToLoad="true"
+		>
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Employees"/>
+					<ToolbarSpacer/>
+					<SearchField
+						width="200px"
+						liveChange=".onSearch"
+					/>
+				</Toolbar>
+			</headerToolbar>
+			<StandardListItem
+				title="{EmpId}"
+				description="{EmpName}"
+				type="Navigation"
+				press="onPress"
+			/>
+		</List>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button
+					icon="sap-icon://add"
+					text="Create"
+					press="onCreate"
+				/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>
